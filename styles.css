@@ -1,0 +1,32 @@
+/* Grundlegender Stil für den Hintergrund und die Ausrichtung */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #222;
+    font-family: 'Arial', sans-serif;
+    color: #0f0;
+}
+
+/* Stil für das Canvas-Element */
+canvas {
+    border: 1px solid #0f0;
+    background-color: #111;
+}
+
+/* Stil für die Schaltflächen */
+button {
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #111;
+    border: 1px solid #0f0;
+    color: #0f0;
+    cursor: pointer;
+    margin: 5px;
+    outline: none;
+}
+
+button:active {
+    background-color: #333;
+}
