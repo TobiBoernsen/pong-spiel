@@ -60,12 +60,31 @@ function update() {
     }
 
     // Ball-Kollision mit den Schlägern
-    if (ball.x - ball.radius < player.x + player.width && ball.x + ball.radius > player.x &&
-        ball.y - ball.radius < player.y + player.height && ball.y + ball.radius > player.y ||
-        ball.x - ball.radius < computer.x + computer.width && ball.x + ball.radius > computer.x &&
-        ball.y - ball.radius < computer.y + computer.height && ball.y + ball.radius > computer.y) {
-        ball.dx = -ball.dx;
+  // Ball-Kollision mit den Schlägern
+if (ball.x - ball.radius < player.x + player.width && ball.x + ball.radius > player.x &&
+    ball.y - ball.radius < player.y + player.height && ball.y + ball.radius > player.y ||
+    ball.x - ball.radius < computer.x + computer.width && ball.x + ball.radius > computer.x &&
+    ball.y - ball.radius < computer.y + computer.height && ball.y + ball.radius > computer.y) {
+    
+    // Finde den Aufprallpunkt: 0 (oberster Punkt des Schlägers) bis 1 (unterster Punkt des Schlägers)
+    let collidePoint;
+    if (ball.x < canvas.width / 2) {
+        collidePoint = (ball.y - (player.y + player.height / 2)) / (player.height / 2);
+    } else {
+        collidePoint = (ball.y - (computer.y + computer.height / 2)) / (computer.height / 2);
     }
+
+    // Ändere den Winkel des Balls basierend auf dem Aufprallpunkt
+    let angle = collidePoint * (Math.PI / 4); // Maximale Änderung des Winkels ist 45 Grad
+    ball.dx = ball.speed * Math.cos(angle);
+    ball.dy = ball.speed * Math.sin(angle);
+
+    // Umkehren der Ballbewegung
+    ball.dx = -ball.dx;
+
+    hitCount++; // Erhöhe den Schlagzähler
+}
+
 
     // KI für den Computer-Schläger
     computer.y += (ball.y - (computer.y + computer.height / 2)) * 0.05;
