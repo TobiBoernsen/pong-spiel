@@ -1,46 +1,53 @@
+/* Grundlegende Stildefinitionen für den gesamten Körper/Body der Webseite */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #111;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-    color: #0f0;
-    background: radial-gradient(circle, #333, #111);
-    flex-direction: column;
+    font-family: 'Arial', sans-serif;        /* Schriftart: Arial */
+    background-color: #111;                  /* Hintergrundfarbe: fast schwarz */
+    display: flex;                           /* Flexbox-Layout verwenden */
+    justify-content: center;                 /* Inhalt horizontal zentrieren */
+    align-items: center;                     /* Inhalt vertikal zentrieren */
+    height: 100vh;                           /* Höhe auf volle Bildschirmhöhe setzen */
+    overflow: hidden;                        /* Scrollen verhindern */
+    color: #0f0;                             /* Schriftfarbe: helles Grün */
+    background: radial-gradient(circle, #333, #111); /* Hintergrund mit einem radialen Gradienten */
+    flex-direction: column;                  /* Flexbox-Inhalt wird in einer Spalte angeordnet */
 }
 
+/* Stildefinitionen für das Pong-Spielfeld, welches in einem HTML-Canvas dargestellt wird */
 #pongCanvas {
-    max-width: 100%; 
-    height: auto;
-    border-left: 1px solid #0f0;
-    border-right: 1px solid #0f0;
-    box-shadow: 0 0 15px #0f0, 0 0 25px #0f0, 0 0 35px #0f0;
-    margin-bottom: 20px;
+    max-width: 100%;                         /* Maximalbreite ist 100% des umgebenden Elements */
+    height: auto;                            /* Höhe passt sich automatisch an */
+    border-left: 1px solid #0f0;             /* Linke Randlinie */
+    border-right: 1px solid #0f0;            /* Rechte Randlinie */
+    box-shadow: 0 0 15px #0f0, 0 0 25px #0f0, 0 0 35px #0f0; /* Box-Schatten um das Canvas für ein Leuchteffekt */
+    margin-bottom: 20px;                     /* Abstand nach unten */
 }
 
+/* Stildefinitionen für Schaltflächen/Buttons */
 button {
-    background-color: #222;
-    color: #0f0;
-    border: 1px solid #0f0;
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    box-shadow: 0 0 10px #0f0;
+    background-color: #222;                  /* Hintergrundfarbe */
+    color: #0f0;                             /* Schriftfarbe */
+    border: 1px solid #0f0;                  /* Randfarbe */
+    padding: 10px 20px;                      /* Innenabstand */
+    margin: 10px;                            /* Außenabstand */
+    font-size: 16px;                         /* Schriftgröße */
+    cursor: pointer;                         /* Mauszeiger wird zur Hand, wenn man darüberfährt */
+    transition: background-color 0.3s;       /* Übergangseffekt für Hintergrundfarbenänderung */
+    box-shadow: 0 0 10px #0f0;               /* Box-Schatten um den Button */
 }
 
+/* Button Hover-Effekt */
 button:hover {
-    background-color: #333;
+    background-color: #333;                  /* Ändert die Hintergrundfarbe, wenn man mit der Maus darüberfährt */
 }
 
+/* Button Aktiv-Effekt */
 button:active {
-    background-color: #444;
+    background-color: #444;                  /* Ändert die Hintergrundfarbe, wenn der Button geklickt wird */
 }
 
+/* Stildefinitionen für Dropdown-Auswahlfelder (select) */
 select {
+    /* Hier ähnliche Stildefinitionen wie beim Button */
     background-color: #222;
     color: #0f0;
     border: 1px solid #0f0;
@@ -50,26 +57,29 @@ select {
     margin: 10px;
 }
 
+/* Entfernt den Standard-Outline-Effekt bei Fokussierung auf ein Auswahlfeld */
 select:focus {
     outline: none;
 }
 
+/* Stildefinitionen für die Optionen innerhalb eines Dropdown-Auswahlfeldes */
 option {
     background-color: #111;
     color: #0f0;
 }
 
-/* Für kleinere Bildschirme */
+/* Media Query für die Anpassung des Designs bei kleineren Bildschirmen (z.B. Mobile Geräte) */
 @media (max-width: 600px) {
     body {
-        justify-content: flex-start;
-        padding-top: 50px;
+        justify-content: flex-start;         /* Ändert die Ausrichtung des Inhalts */
+        padding-top: 50px;                    /* Fügt oben einen Abstand hinzu */
     }
 
     #pongCanvas {
-        margin-bottom: 10px;
+        margin-bottom: 10px;                 /* Verringert den Abstand unten für das Canvas */
     }
 
+    /* Verringert die Schriftgröße und den Abstand für Buttons und Select-Elemente auf kleineren Bildschirmen */
     button, select {
         font-size: 14px;
         padding: 5px 10px;
