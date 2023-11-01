@@ -1,10 +1,12 @@
+// Referenz zum Canvas-Element und dem 2D-Zeichenkontext abrufen
 const canvas = document.getElementById("pongCanvas");
 const ctx = canvas.getContext("2d");
+// Funktion zum Einstellen der Canvas-Größe basierend auf dem Verhältnis von Fensterhöhe zu -breite
 
 function setCanvasSize() {
     const targetRatio = 600 / 320;
     const windowRatio = window.innerHeight / window.innerWidth;
-
+ // Setzen Sie die Canvas-Größe basierend auf dem Zielverhältnis
     if (windowRatio > targetRatio) {
         canvas.width = window.innerWidth;
         canvas.height = window.innerWidth * targetRatio;
@@ -19,7 +21,7 @@ setCanvasSize();
 
  // Aktualisieren Sie die Canvas-Größe, wenn das Fenster neu skaliert wird
 setCanvasSize(); // Setzen Sie die Canvas-Größe beim ersten Laden
-
+// Definition der Ball-Eigenschaften
 const ball = {
     x: canvas.width / 2,
     y: canvas.height / 2,
@@ -29,7 +31,7 @@ const ball = {
     dy: 2,
     color: "#0f0"
 };
-
+// Definition der Spieler-Schläger-Eigenschaften
 const player = {
     x: 0,
     y: canvas.height / 2 - 50,
@@ -38,7 +40,7 @@ const player = {
     dy: 4,
     color: "#0f0"
 };
-
+// Definition der Computer-Schläger-Eigenschaften
 const computer = {
     x: canvas.width - 10,
     y: canvas.height / 2 - 50,
@@ -47,18 +49,19 @@ const computer = {
     dy: 4,
     color: "#0f0"
 };
-
+// Startwert der Punktzahl für Spieler und Computer
 let playerScore = 0;
 let computerScore = 0;
 let hitCount = 0;
 const difficultySelect = document.getElementById("difficulty");
 let difficulty = difficultySelect.value;
-
+// Schwierigkeitsgrad des Spiels abrufen und ändern
 difficultySelect.addEventListener("change", function() {
     difficulty = difficultySelect.value;
     resetDifficulty();
     restartGame();
 });
+// Setzt die Spielparameter basierend auf dem gewählten Schwierigkeitsgrad zurück
 
 function resetDifficulty() {
     switch(difficulty) {
@@ -79,6 +82,7 @@ function resetDifficulty() {
             break;
     }
 }
+// Bestimmt, ob der Computer einen Fehler machen soll oder nicht
 
 function shouldMakeMistake() {
     let mistakeChance = 0;
@@ -95,6 +99,7 @@ function shouldMakeMistake() {
     }
     return Math.random() < mistakeChance;
 }
+// Startet das Spiel neu
 
 function restartGame() {
     ball.x = canvas.width / 2;
@@ -103,6 +108,7 @@ function restartGame() {
     ball.dy = (Math.random() * 4 - 2) * ball.speed;
     hitCount = 0;
 }
+// Zeichnet den Ball auf dem Canvas
 
 function drawBall() {
     ctx.fillStyle = ball.color;
@@ -111,17 +117,20 @@ function drawBall() {
     ctx.closePath();
     ctx.fill();
 }
+// Zeichnet die Schläger auf dem Canvas
 
 function drawPaddle(x, y, width, height, color) {
     ctx.fillStyle = color;
     ctx.fillRect(x, y, width, height);
 }
+// Zeichnet die aktuelle Punktzahl
 
 function drawScore() {
     ctx.font = "24px Arial";
     ctx.fillText(playerScore, canvas.width / 4, 30);
     ctx.fillText(computerScore, (3 * canvas.width) / 4, 30);
 }
+// Zeigt eine Nachricht am Ende des Spiels an
 
 function displayEndMessage(message) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -129,6 +138,7 @@ function displayEndMessage(message) {
     ctx.font = "40px Arial";
     ctx.fillText(message, canvas.width / 2 - ctx.measureText(message).width / 2, canvas.height / 2);
 }
+// Aktualisiert das Spiel (Bewegung des Balls, Kollisionen, Punktzahl)
 
 function update() {
     ball.x += ball.dx;
@@ -179,11 +189,13 @@ function update() {
     drawScore();
     requestAnimationFrame(update);
 }
+// Verarbeitet Mausbewegungen, um den Spieler-Schläger zu steuern
 
 canvas.addEventListener("mousemove", function(event) {
     const rect = canvas.getBoundingClientRect();
     player.y = event.clientY - rect.top - player.height / 2;
 });
+// Verarbeitet Tastendrücke, um den Spieler-Schläger zu steuern
 
 document.addEventListener("keydown", function(event) {
     switch(event.keyCode) {
@@ -195,6 +207,7 @@ document.addEventListener("keydown", function(event) {
             break;
     }
 });
+// Touch-Events für mobile Steuerung
 
 document.getElementById("moveUp").addEventListener("touchstart", function() {
     movePaddle(player, "up");
@@ -202,6 +215,7 @@ document.getElementById("moveUp").addEventListener("touchstart", function() {
 document.getElementById("moveDown").addEventListener("touchstart", function() {
     movePaddle(player, "down");
 });
+// Bewegt den Schläger in eine bestimmte Richtung
 
 function movePaddle(paddle, direction) {
     if (direction === "up") {
@@ -211,11 +225,14 @@ function movePaddle(paddle, direction) {
     }
 }
 
-let speedIncreaseFactor = 1.025;
+// Erhöht die Geschwindigkeit des Balls im Laufe der Zeit
+
+let speedIncreaseFactor = 1.05;
 setInterval(function() {
     ball.dx *= speedIncreaseFactor;
     ball.dy *= speedIncreaseFactor;
 }, 10000);
+// Setzt die Schwierigkeit zurück und startet das Spiel
 
 resetDifficulty();
 update();
