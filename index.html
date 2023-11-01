@@ -2,19 +2,36 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+  <!-- Ein Meta-Tag für responsive Design. Es stellt sicher, dass die Seite sich gut an verschiedene Bildschirmgrößen anpasst -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Titel der Webseite, der im Browser-Tab angezeigt wird -->
     <title>Pong im Cyberpunk-Stil</title>
+
+    <!-- Verknüpfung zum externen CSS-Datei "style.css" für das Styling der Webseite -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+
+<body> <!-- Der Hauptinhalt der Webseite -->
+
+    <!-- Ein HTML Canvas-Element, mit dem Grafiken gezeichnet werden können. Es wird für das Pong-Spiel verwendet -->
     <canvas id="pongCanvas"></canvas>
+
+    <!-- Ein Button-Element, mit dem der Spieler den Pong-Schläger nach oben bewegen kann -->
     <button id="moveUp">Nach oben</button>
+
+    <!-- Ein weiteres Button-Element, mit dem der Spieler den Pong-Schläger nach unten bewegen kann -->
     <button id="moveDown">Nach unten</button>
+
+    <!-- Ein Dropdown-Menü (Select-Element) zur Auswahl der Schwierigkeitsstufe des Spiels -->
     <select id="difficulty">
+        <!-- Drei Optionen für das Dropdown-Menü, um die Schwierigkeitsstufe auszuwählen -->
         <option value="easy">Einfach</option>
         <option value="medium">Mittel</option>
         <option value="hard">Schwierig</option>
     </select>
+
+    <!-- Einbindung eines externen JavaScript-Datei "script.js", das die Funktionalität für das Pong-Spiel enthält -->
     <script src="script.js"></script>
 </body>
 </html>
