@@ -1,28 +1,20 @@
-Pong im Cyberpunk-Stil
-Ein moderner Ansatz des klassischen Pong-Spiels im Cyberpunk-Design.
+# Pong im Cyberpunk-Stil
 
-Einleitung
-Dieses Projekt ist eine Hommage an das klassische Pong-Spiel, jedoch mit einem modernen Touch im Cyberpunk-Stil. Es verwendet einfaches HTML, CSS und Vanilla JS.
+Ein einfaches Pong-Spiel im Cyberpunk-Stil, das mit HTML, CSS und JavaScript erstellt wurde.
 
-Voraussetzungen
-Ein moderner Webbrowser wie:
+## Features
 
-Chrome 64 oder höher
-Firefox 58 oder höher
-Safari 11 oder höher
-Edge 79 oder höher
-Installation und Einrichtung
-Klonen Sie das Repository:
+- Dynamische Anpassung an verschiedene Bildschirmgrößen
+- Unterstützung für Touch-Steuerung für mobile Geräte
+- Drei Schwierigkeitsstufen: Einfach, Mittel, Schwierig
 
+## Installation
 
-git clone https://github.com/IhrBenutzername/PongCyberpunk.git
-Wechseln Sie in das Verzeichnis:
+1. Klone das Repository oder lade es als ZIP-Datei herunter.
+2. Öffne `index.html` in deinem bevorzugten Webbrowser, um das Spiel zu starten.
 
-cd PongCyberpunk
-Öffnen Sie die HTML-Datei in einem Webbrowser:
+## Spielanleitung
 
-perl
-
-Öffnen Sie die Datei `index.html` in Ihrem bevorzugten Webbrowser.
-Verwendung
-Starten Sie das Spiel und steuern Sie den Schläger mit den Buttons "Nach oben" und "Nach unten". Wählen Sie die gewünschte Schwierigkeitsstufe über das Dropdown-Menü aus.
+- Bewege den Schläger mit der Maus oder den Touch-Buttons "Nach oben" und "Nach unten".
+- Verhindere, dass der Ball an deiner Seite vorbeikommt.
+- Erziele Punkte, indem du den Ball an der Seite des Computers vorbeilässt.
